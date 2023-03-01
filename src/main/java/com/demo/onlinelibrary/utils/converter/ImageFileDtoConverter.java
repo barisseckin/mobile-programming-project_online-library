@@ -5,7 +5,7 @@ import com.demo.onlinelibrary.model.ImageFile;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ImageFileConverter {
+public class ImageFileDtoConverter {
 
     public ImageFileDto toDto(ImageFile from) {
         return new ImageFileDto(

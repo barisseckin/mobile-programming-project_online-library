@@ -34,6 +34,8 @@ public class Book extends BaseEntity{
     private int pageRead;
     private BookReadStatus bookReadStatus;
 
+    @ManyToOne
+    private User user;
     @ManyToOne(cascade = CascadeType.ALL)
     private ImageFile imageFile;
 }
