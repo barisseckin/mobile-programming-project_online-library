@@ -30,4 +30,14 @@ public class User extends BaseEntity{
 
     @ManyToOne(cascade = CascadeType.ALL)
     private ImageFile imageFile;
+
+    @ManyToOne
+    private ConfirmCode confirmCode;
+
+    public User(String username, String mail, String password, ImageFile imageFile) {
+        this.username = username;
+        this.mail = mail;
+        this.password = password;
+        this.imageFile = imageFile;
+    }
 }

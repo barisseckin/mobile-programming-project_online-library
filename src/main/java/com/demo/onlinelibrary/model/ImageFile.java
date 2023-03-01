@@ -31,4 +31,11 @@ public class ImageFile extends BaseEntity{
 
     @Lob
     private byte[] data;
+
+    public ImageFile(String fileType, Long fileSize, String fileName, byte[] data) {
+        this.fileType = fileType;
+        this.fileSize = fileSize;
+        this.fileName = fileName;
+        this.data = data;
+    }
 }
