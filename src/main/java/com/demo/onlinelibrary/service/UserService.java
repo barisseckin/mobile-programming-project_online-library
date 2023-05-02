@@ -2,21 +2,16 @@ package com.demo.onlinelibrary.service;
 
 import com.demo.onlinelibrary.dto.UserDto;
 import com.demo.onlinelibrary.model.ConfirmCode;
-import com.demo.onlinelibrary.model.ImageFile;
 import com.demo.onlinelibrary.model.User;
 import com.demo.onlinelibrary.repository.UserRepository;
 import com.demo.onlinelibrary.request.CreateUserRequest;
 import com.demo.onlinelibrary.utils.ConfirmCodeService;
 import com.demo.onlinelibrary.utils.MailSenderService;
 import static com.demo.onlinelibrary.utils.constant.MailConstant.*;
-import com.demo.onlinelibrary.utils.converter.UserDtoConverter;
+import com.demo.onlinelibrary.dto.converter.UserDtoConverter;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 @Service
 public class UserService {
@@ -40,8 +35,7 @@ public class UserService {
         var saved = new User(
                 request.getUsername(),
                 request.getMail(),
-                request.getPassword(),
-                null
+                request.getPassword()
         );
 
         userRepository.save(saved);

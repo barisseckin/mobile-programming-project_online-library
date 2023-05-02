@@ -17,7 +17,6 @@ public class UserDto {
     private String mail;
     private String password;
     private boolean isActive;
-    private ImageFileDto imageFile;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 }

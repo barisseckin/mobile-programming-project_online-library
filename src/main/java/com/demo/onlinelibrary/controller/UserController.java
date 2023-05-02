@@ -6,9 +6,7 @@ import com.demo.onlinelibrary.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -21,21 +19,20 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> save(@RequestBody CreateUserRequest request)
-            throws IOException {
+    public ResponseEntity<UserDto> save(@RequestBody CreateUserRequest request) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(userService.save(request));
     }
 
     @DeleteMapping
-    public ResponseEntity<?> delete(@RequestParam String mail) {
+    public ResponseEntity<Void> delete(@RequestParam String mail) {
         userService.delete(mail);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/send-confirm-code")
-    public ResponseEntity<?> sendConfirmCode(@RequestParam String mail) {
+    public ResponseEntity<Void> sendConfirmCode(@RequestParam String mail) {
         userService.sendConfirmCode(mail);
         return ResponseEntity.noContent().build();
     }
@@ -45,5 +42,4 @@ public class UserController {
         return ResponseEntity
                 .ok(userService.activateUser(mail, code));
     }
-
 }

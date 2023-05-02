@@ -23,7 +23,6 @@ public class BookDto {
     private int pageRead;
     private BookReadStatus bookReadStatus;
     private UserDto user;
-    private ImageFileDto imageFile;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 }
