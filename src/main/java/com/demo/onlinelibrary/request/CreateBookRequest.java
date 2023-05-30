@@ -1,12 +1,15 @@
 package com.demo.onlinelibrary.request;
 
 import com.demo.onlinelibrary.model.BookReadStatus;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class CreateBookRequest {
+    @NotBlank
     private String name;
     private String releaseYear;
     private String publisher;
@@ -14,5 +17,6 @@ public class CreateBookRequest {
     private int totalPageNumber;
     private int pageRead;
     private BookReadStatus bookReadStatus;
+    @Email
     private String userMail;
 }

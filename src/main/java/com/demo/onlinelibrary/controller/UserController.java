@@ -3,6 +3,7 @@ package com.demo.onlinelibrary.controller;
 import com.demo.onlinelibrary.dto.UserDto;
 import com.demo.onlinelibrary.request.CreateUserRequest;
 import com.demo.onlinelibrary.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> save(@RequestBody CreateUserRequest request) {
+    public ResponseEntity<UserDto> save(@RequestBody @Valid CreateUserRequest request) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(userService.save(request));

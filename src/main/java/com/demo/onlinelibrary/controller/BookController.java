@@ -3,6 +3,7 @@ package com.demo.onlinelibrary.controller;
 import com.demo.onlinelibrary.dto.BookDto;
 import com.demo.onlinelibrary.request.CreateBookRequest;
 import com.demo.onlinelibrary.service.BookService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class BookController {
     private final BookService bookService;
 
     @PostMapping
-    public ResponseEntity<BookDto> save(@RequestBody CreateBookRequest request) {
+    public ResponseEntity<BookDto> save(@RequestBody @Valid CreateBookRequest request) {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(bookService.save(request));
