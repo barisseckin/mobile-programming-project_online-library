@@ -35,4 +35,16 @@ public class Book extends BaseEntity{
     private BookReadStatus bookReadStatus;
     @ManyToOne
     private User user;
+
+    public Book(String name, String releaseYear, String publisher, String author, int totalPageNumber,
+                int pageRead, BookReadStatus bookReadStatus, User user) {
+        this.name = name;
+        this.releaseYear = releaseYear;
+        this.publisher = publisher;
+        this.author = author;
+        this.totalPageNumber = totalPageNumber;
+        this.pageRead = pageRead;
+        this.bookReadStatus = bookReadStatus;
+        this.user = user;
+    }
 }

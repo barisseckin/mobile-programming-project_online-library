@@ -25,4 +25,8 @@ public class Category extends BaseEntity{
     private Long id;
     private String publicId = UUID.randomUUID().toString();
     private String name;
+
+    public Category(String name) {
+        this.name = name;
+    }
 }

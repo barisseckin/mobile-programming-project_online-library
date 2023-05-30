@@ -76,7 +76,7 @@ public class UserService {
         userRepository.deleteById(fromDbUser.getId());
     }
 
-    private User getByMail(String mail) {
+    protected User getByMail(String mail) {
         return userRepository.findUserByMail(mail)
                 .orElseThrow(() -> new RuntimeException(""));
     }
