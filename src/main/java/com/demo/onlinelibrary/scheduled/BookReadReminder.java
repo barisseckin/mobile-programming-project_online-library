@@ -20,7 +20,7 @@ public class BookReadReminder {
     @Scheduled(fixedRateString = "${reminder.read-alarm-value}")
     public void executeReminder() {
         for (BookDto book : bookService.getAll()) {
-            if (book.getUpdateDate().isAfter(book.getUpdateDate().plusDays(3))) {
+            if (book.getUpdateDate().isBefore(book.getUpdateDate().plusDays(3))) {
                 mailSenderService.send(
                         book.getUser().getMail(),
                         REMINDER_TITLE,

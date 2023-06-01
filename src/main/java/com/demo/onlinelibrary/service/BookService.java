@@ -57,6 +57,12 @@ public class BookService {
                 .toList();
     }
 
+    public void updatePageReadNumber(String publicId, int pageNumber) {
+        Book fromDb = getByPublicId(publicId);
+        fromDb.setPageRead(pageNumber);
+        bookRepository.save(fromDb);
+    }
+
     private Book getByPublicId(String publicId) {
         return bookRepository.findBookByPublicId(publicId)
                 .orElseThrow(() -> new GenericException("book not found, publicId: " + publicId, HttpStatus.NOT_FOUND));

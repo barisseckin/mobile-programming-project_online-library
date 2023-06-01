@@ -36,4 +36,13 @@ public class BookController {
         return ResponseEntity
                 .ok(bookService.getBookByUser(mail));
     }
+
+    @PutMapping("/update-page-number/{publicId}")
+    public ResponseEntity<Void> updatePageReadNumber(
+            @PathVariable("publicId") String publicId,
+            @RequestParam("pageNumber") int pageNumber) {
+
+        bookService.updatePageReadNumber(publicId, pageNumber);
+        return ResponseEntity.noContent().build();
+    }
 }

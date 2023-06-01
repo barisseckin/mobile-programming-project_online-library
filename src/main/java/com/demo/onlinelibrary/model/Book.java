@@ -1,11 +1,6 @@
 package com.demo.onlinelibrary.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +27,7 @@ public class Book extends BaseEntity{
     private String author;
     private int totalPageNumber;
     private int pageRead;
+    @Enumerated(EnumType.STRING)
     private BookReadStatus bookReadStatus;
     @ManyToOne
     private User user;
