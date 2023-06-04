@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.demo.onlinelibrary.utils.constant.EndpointPath.CATEGORY_PATH;
+
 @RestController
-@RequestMapping("/api/v1/category")
+@RequestMapping(CATEGORY_PATH)
 @RequiredArgsConstructor
 public class CategoryController {
 

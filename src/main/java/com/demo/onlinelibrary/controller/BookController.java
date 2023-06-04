@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.demo.onlinelibrary.utils.constant.EndpointPath.BOOK_PATH;
+
 @RestController
-@RequestMapping("/api/v1/book")
+@RequestMapping(BOOK_PATH)
 @RequiredArgsConstructor
 public class BookController {
 

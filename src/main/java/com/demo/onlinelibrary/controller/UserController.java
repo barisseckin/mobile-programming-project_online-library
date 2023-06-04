@@ -8,9 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static com.demo.onlinelibrary.utils.constant.EndpointPath.USER_PATH;
+
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping(USER_PATH)
 public class UserController {
 
     private final UserService userService;
