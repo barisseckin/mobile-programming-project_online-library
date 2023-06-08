@@ -20,6 +20,7 @@ public class BookService {
     private final BookRepository bookRepository;
     private final BookDtoConverter bookDtoConverter;
     private final UserService userService;
+    private final CategoryService categoryService;
 
     public BookDto save(CreateBookRequest request) {
         Book saved = new Book(
@@ -30,7 +31,8 @@ public class BookService {
                 request.getTotalPageNumber(),
                 request.getPageRead(),
                 request.getBookReadStatus(),
-                userService.getByMail(request.getUserMail())
+                userService.getByMail(request.getUserMail()),
+                categoryService.getByName(request.getCategoryName())
         );
 
         bookRepository.save(saved);

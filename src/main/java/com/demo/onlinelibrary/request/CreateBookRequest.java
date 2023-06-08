@@ -19,4 +19,6 @@ public class CreateBookRequest {
     private BookReadStatus bookReadStatus;
     @Email
     private String userMail;
+    @NotBlank
+    private String categoryName;
 }

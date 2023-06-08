@@ -8,9 +8,12 @@ import org.springframework.stereotype.Component;
 public class BookDtoConverter {
 
     private final UserDtoConverter userDtoConverter;
+    private final CategoryDtoConverter categoryDtoConverter;
 
-    public BookDtoConverter(UserDtoConverter userDtoConverter) {
+    public BookDtoConverter(UserDtoConverter userDtoConverter,
+                            CategoryDtoConverter categoryDtoConverter) {
         this.userDtoConverter = userDtoConverter;
+        this.categoryDtoConverter = categoryDtoConverter;
     }
 
     public BookDto toDto(Book from) {
@@ -24,6 +27,7 @@ public class BookDtoConverter {
                 from.getPageRead(),
                 from.getBookReadStatus(),
                 userDtoConverter.toDto(from.getUser()),
+                categoryDtoConverter.toDto(from.getCategory()),
                 from.getCreateDate(),
                 from.getUpdateDate()
         );
