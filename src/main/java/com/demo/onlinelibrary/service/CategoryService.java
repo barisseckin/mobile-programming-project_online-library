@@ -23,9 +23,20 @@ public class CategoryService {
         return categoryDtoConverter.toDto(saved);
     }
 
+    public void delete(String publicId) {
+        Category category = getByPublicId(publicId);
+        categoryRepository.deleteById(category.getId());
+    }
+
     protected Category getByName(String categoryName) {
         return categoryRepository.findCategoryByName(categoryName)
                 .orElseThrow(() -> new GenericException("category not found, name: " + categoryName,
+                        HttpStatus.NOT_FOUND));
+    }
+
+    private Category getByPublicId(String publicId) {
+        return categoryRepository.findCategoryByPublicId(publicId)
+                .orElseThrow(() -> new GenericException("category not found, publicId: " + publicId,
                         HttpStatus.NOT_FOUND));
     }
 }
