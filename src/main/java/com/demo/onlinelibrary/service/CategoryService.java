@@ -7,8 +7,12 @@ import com.demo.onlinelibrary.model.Category;
 import com.demo.onlinelibrary.repository.CategoryRepository;
 import com.demo.onlinelibrary.request.CreateCategoryRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+import java.awt.print.Pageable;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +30,14 @@ public class CategoryService {
     public void delete(String publicId) {
         Category category = getByPublicId(publicId);
         categoryRepository.deleteById(category.getId());
+    }
+
+    public List<CategoryDto> getAll(int page, int size) {
+        PageRequest pageable = PageRequest.of(page, size);
+        return categoryRepository.findAll(pageable)
+                .stream()
+                .map(categoryDtoConverter::toDto)
+                .toList();
     }
 
     protected Category getByName(String categoryName) {
