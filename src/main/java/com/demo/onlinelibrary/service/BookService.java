@@ -4,6 +4,7 @@ import com.demo.onlinelibrary.dto.BookDto;
 import com.demo.onlinelibrary.dto.converter.BookDtoConverter;
 import com.demo.onlinelibrary.exception.GenericException;
 import com.demo.onlinelibrary.model.Book;
+import com.demo.onlinelibrary.model.Category;
 import com.demo.onlinelibrary.model.User;
 import com.demo.onlinelibrary.repository.BookRepository;
 import com.demo.onlinelibrary.request.CreateBookRequest;
@@ -54,6 +55,16 @@ public class BookService {
 
     public List<BookDto> getAll() {
         return bookRepository.findAll()
+                .stream()
+                .map(bookDtoConverter::toDto)
+                .toList();
+    }
+
+    public List<BookDto> getByCategory(String mail, String categoryName) {
+        User user = userService.getByMail(mail);
+        Category category = categoryService.getByName(categoryName);
+
+        return bookRepository.findBookByUserAndCategory(user, category)
                 .stream()
                 .map(bookDtoConverter::toDto)
                 .toList();

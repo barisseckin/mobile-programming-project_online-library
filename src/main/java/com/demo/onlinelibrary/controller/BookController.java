@@ -47,4 +47,12 @@ public class BookController {
         bookService.updatePageReadNumber(publicId, pageNumber);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/category")
+    public ResponseEntity<List<BookDto>> getByCategory(
+            @RequestParam("mail") String mail,
+            @RequestParam("categoryName") String categoryName) {
+        return ResponseEntity
+                .ok(bookService.getByCategory(mail, categoryName));
+    }
 }
