@@ -42,6 +42,10 @@ public class UserService {
         return dtoConverter.toDto(saved);
     }
 
+    public UserDto getUserByMail(String mail) {
+        return dtoConverter.toDto(getByMail(mail));
+    }
+
     public void sendConfirmCode(String mail) {
         ConfirmCode confirmCode = new ConfirmCode();
 

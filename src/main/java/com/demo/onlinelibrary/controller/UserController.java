@@ -45,4 +45,10 @@ public class UserController {
         return ResponseEntity
                 .ok(userService.activateUser(mail, code));
     }
+
+    @GetMapping("/mail")
+    public ResponseEntity<UserDto> getUserByMail(@RequestParam("mail") String mail) {
+        return ResponseEntity
+                .ok(userService.getUserByMail(mail));
+    }
 }
